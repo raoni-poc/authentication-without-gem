@@ -1,3 +1,7 @@
+#### Patterns
+
+This app is a JSON api and fallow the spec defined by jsonapi.org
+
 #### Up and Down Application
 
 The app container will use port 3000 and postgresql db will use port 5432,
