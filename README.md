@@ -48,7 +48,7 @@ You can rebuild and up a fresh app container with the command below
 You can access the app container
 
 ```
-$ docker exec -it personal-agile-app-1 bash
+$ docker exec -it authentication-without-gem-app-1 bash
 ```
 
 Assuming you're looking to kill rails server on port 3000,
