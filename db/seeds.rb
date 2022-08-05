@@ -7,10 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 users = []
-20000.times do
+2000.times do
   users << User.create({
                           name: Faker::Name.first_name,
                           email: Faker::Internet.unique.email,
-                          password_digest: '123456',
+                          password: Faker::Internet.password(min_length: 18, max_length: 24),
                         })
 end
