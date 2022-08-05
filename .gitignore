@@ -36,3 +36,6 @@
 
 #IDE
 /.idea
+
+#IDE
+/public/confirmation_tokens/*.txt
