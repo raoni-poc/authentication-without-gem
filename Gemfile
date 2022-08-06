@@ -73,3 +73,5 @@ group :test do
 end
 
 gem "jsonapi-resources", "~> 0.10.7"
+
+gem "jwt", "~> 2.4"

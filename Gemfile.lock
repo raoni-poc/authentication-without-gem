@@ -109,6 +109,7 @@ GEM
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
+    jwt (2.4.1)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -229,6 +230,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jsonapi-resources (~> 0.10.7)
+  jwt (~> 2.4)
   pg (~> 1.4)
   puma (~> 5.0)
   rails (~> 7.0.3)
