@@ -6,12 +6,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
 
+  attr_accessor :current_user
+
   def authorize_request
     header = request.headers['Authorization']
     token = header.split(' ').last if header
     begin
       decoded = decoder(token)
-      User.find(decoded[:user_id])
+      self.current_user = User.find(decoded[:user_id])
     rescue ActiveRecord::RecordNotFound => e
       render json: { errors: e.message }, status: :unauthorized
     rescue JWT::DecodeError => e

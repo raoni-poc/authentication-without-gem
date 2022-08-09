@@ -1,5 +1,6 @@
 class AuthenticationController < ApplicationController
   include JwtHelper
+  before :authorize_request, only: [:request_password_change]
 
   def login
     user = User.find_by_email(params[:email])
@@ -17,10 +18,34 @@ class AuthenticationController < ApplicationController
     end
   end
 
-  private
-
-  def login_params
-    params.permit(:email, :password)
+  def request_password_change
+    self.user.send_recover_password
+    render json: { msg: 'check link in your email'}, status: :ok
   end
 
+  def recover_password
+    token = params[:recover_password]
+    user = User.find_signed(token, purpose: :recover_password)
+
+    if user.nil? || user.unconfirmed? || user.email != params[:email]
+      return render :json => "Unauthorized", status: :unauthorized
+    end
+
+    begin
+      user.password = params[:password]
+      user.save
+    rescue ActiveRecord::RecordInvalid => e
+      return render json: { errors: e.message }, status: :bad_request
+    end
+
+    private
+
+    def login_params
+      params.permit(:email, :password)
+    end
+
+    def change_password_params
+      params.permit(:email, :recover_password)
+    end
+  end
 end

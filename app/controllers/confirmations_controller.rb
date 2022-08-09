@@ -15,6 +15,5 @@ class ConfirmationsController < ApplicationController
     if user.confirmed?
       return render :json => "Your email has already been confirmed."
     end
-
   end
 end
