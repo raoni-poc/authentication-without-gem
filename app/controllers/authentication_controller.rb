@@ -1,6 +1,6 @@
 class AuthenticationController < ApplicationController
   include JwtHelper
-  before :authorize_request, only: [:request_password_change]
+  before_action :authorize_request, only: [:request_password_change]
 
   def login
     user = User.find_by_email(params[:email])
