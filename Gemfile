@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 gem "pg", "~> 1.4"
 
 gem 'faker', group: [:development, :test]
+gem 'simplecov', group: [:development, :test]
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

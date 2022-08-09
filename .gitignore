@@ -39,3 +39,6 @@
 
 #IDE
 /public/confirmation_tokens/*.txt
+
+#Cover files
+/coverage
