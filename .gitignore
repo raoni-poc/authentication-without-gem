@@ -36,3 +36,10 @@
 
 #IDE
 /.idea
+
+#IDE
+/public/confirmation_tokens/*.txt
+/public/recover_password_token/*.txt
+
+#Cover files
+/coverage

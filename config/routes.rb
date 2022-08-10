@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  jsonapi_resources :users
+  get '/confirmations/email/token', to: 'confirmations#email', param: :confirmation_token
+  post '/auth/login', to: 'authentication#login'
+  post '/auth/request-password-change', to: 'authentication#request_password_change'
+  post '/auth/recover-password', to: 'authentication#recover_password'
 end
