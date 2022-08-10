@@ -54,14 +54,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "user can recover password" do
-    insert_user_and_confirm_email
-    url = "/users/#{user.id}"
-    headers = { "Content-Type" => "application/vnd.api+json", "Authorization" => "Bearer #{barer_token}" }
-    get url, params: nil, headers: headers
-    assert_response :success
-  end
-
   private
 
   def insert_user

@@ -1,6 +1,17 @@
-#### Patterns
+#### Endpoints
 
-This app is a JSON api and fallow the spec defined by jsonapi.org
+Desc                       | Verb     | URI Pattern                   | Body Ex.:
+---------------------------|----------|-------------------------------|-------
+List Users                 | GET      | /users                        | -
+Create User                | POST     | /users                        | {"data": {"type":"users", "attributes":{"name":"Raoni", "email":"raoni@boring.test", "password":"12345678"}}}
+Get One User               | user GET | /users/:id                    |  -
+Edit User                  | PATCH    | /users/:id                    |  -
+Edit User                  | PUT      | /users/:id                    |  -
+Delete User                | DELETE   | /users/:id                    |  -
+Confirm Email              | GET      | /confirmations/email/token    |  -
+Login                      | POST     | /auth/login                   |  -
+Send Recover Pass To Email | POST     | /auth/request-password-change |  -
+Recover Password           |  POST    | /auth/recover-password        |  -
 
 #### Up and Down Application
 
@@ -29,7 +40,6 @@ $ docker-compose run app rails db:migrate
 $ docker-compose run app rails db:seed
 ```
 
-
 After the above commands, the expectation is to have your application running in the development environment without
 problems. To close the application just use the command below
 
@@ -38,6 +48,7 @@ $ docker-compose down
 ```
 
 --------------------
+
 ### Debugging
 
 The tips below can be useful to debug your app.
@@ -47,7 +58,6 @@ You can rebuild and up a fresh app container with the command below
 ```
  $ docker-compose down && docker-compose build --no-cache && docker-compose up -d
 ```
-
 
 You can access the app container
 
@@ -62,8 +72,20 @@ type this inside your app container to find out the PID of the process:
 $ apt install lsof
 $ lsof -wni tcp:3000
 ```
+
 Then, use the number in the PID column to kill the process
+
 ```
 $ kill -9 PID
 ```
+
 This can be useful to unlock the database for example
+
+-----------
+
+#### Pendências
+
+- Logout e invalidação de tokens
+- Refresh Token
+- Reenvio de token de confirmação de Email
+

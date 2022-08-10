@@ -40,14 +40,5 @@ class AuthenticationController < ApplicationController
 
     return render json: { msg: 'password altered' }, status: :ok
 
-    private
-
-    def login_params
-      params.permit(:email, :password)
-    end
-
-    def request_password_change
-      params.permit(:email, :recover_token)
-    end
   end
 end

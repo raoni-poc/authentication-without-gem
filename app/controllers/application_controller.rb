@@ -22,4 +22,19 @@ class ApplicationController < ActionController::Base
       }, status: :unauthorized
     end
   end
+
+  def is_owner
+    header = request.headers['Authorization']
+    token = header.split(' ').last if header
+    begin
+      decoded = decoder(token)
+      user = User.find(decoded[:user_id])
+      if user.id != params[:id].to_i
+        render json: {
+          errors: '404 not found'
+        }, status: :not_found
+      end
+    end
+  end
+
 end
