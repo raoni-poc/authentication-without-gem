@@ -29,16 +29,16 @@ class User < ApplicationRecord
     file = File.open("public/confirmation_tokens/#{self.email}.txt", "w")
     file.write(confirmation_token)
     file.close
-    puts 'CONFIRMATION TOKEN: '+ confirmation_token
+    #puts 'CONFIRMATION TOKEN: '+ confirmation_token
   end
 
   def send_recover_password
-    recover_token = signed_id expires_in: TOKEN_EXPIRATION, purpose: :recover_password
+    recover_token = signed_id expires_in: TOKEN_EXPIRATION, purpose: :recover_token
     #UserMailer.confirmation(self).deliver_later
-    file = File.open("public/confirmation_tokens/#{self.email}.txt", "w")
+    file = File.open("public/recover_password_token/#{self.email}.txt", "w")
     file.write(recover_token)
     file.close
-    puts 'CHANGE PASSWORD TOKEN: '+recover_token
+    #puts 'CHANGE PASSWORD TOKEN: '+recover_token
   end
 
 
